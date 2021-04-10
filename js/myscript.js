@@ -12,7 +12,16 @@ var todos = ['Go to Market','Learn JS', 'Pay the Bills'];
 function renderTodos(){
 
     for (todo of todos){
-       alert(todo);
+       //alert(todo); // make a test
+
+       var todoElement = document.createElement('li'); // To create a element in HTML
+       var todoText = document.createTextNode(todo); // To create a text 
+
+       todoElement.appendChild(todoText); // insert element in HTML
+
+       listElement.appendChild(todoElement);
+
+
     }
 }
 
