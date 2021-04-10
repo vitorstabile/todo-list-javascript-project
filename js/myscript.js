@@ -7,7 +7,7 @@ var inputElement = document.querySelector('#app input');
 
 var buttonElement = document.querySelector('#app button');
 
-var todos = ['Go to Market','Learn JS', 'Pay the Bills'];
+var todos = JSON.parse(localStorage.getItem('list_todo')) || [];
 
 function renderTodos(){
 
@@ -56,6 +56,8 @@ function addTodo(){
 
     renderTodos();
 
+    dataSave();
+
 }
 
 buttonElement.onclick = addTodo; // when he make a onclick in the button, 
@@ -67,4 +69,9 @@ function deleteTodo(position){
 
     todos.splice(position, 1);
     renderTodos();
+    dataSave();
+}
+
+function dataSave(){
+    localStorage.setItem('list_todo', JSON.stringify(todos)); // convert list in JSON and save the list
 }
