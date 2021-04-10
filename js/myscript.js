@@ -11,6 +11,8 @@ var todos = ['Go to Market','Learn JS', 'Pay the Bills'];
 
 function renderTodos(){
 
+    listElement.innerHTML = ''; //clean the list
+
     for (todo of todos){
        //alert(todo); // make a test
 
@@ -26,3 +28,22 @@ function renderTodos(){
 }
 
 renderTodos();
+
+function addTodo(){
+
+    if(inputElement.value == ''){
+        alert("Enter a Task");
+        return false;
+    }
+
+    var todoText = inputElement.value; // take the value of new todo in text
+
+    todos.push(todoText); // insert the new todo in the list
+
+    inputElement.value = ''; //clear the old value
+
+    renderTodos();
+
+}
+
+buttonElement.onclick = addTodo; // when he make a onclick in the button, he will execute the function addTodo
