@@ -8,3 +8,12 @@ var inputElement = document.querySelector('#app input');
 var buttonElement = document.querySelector('#app button');
 
 var todos = ['Go to Market','Learn JS', 'Pay the Bills'];
+
+function renderTodos(){
+
+    for (todo of todos){
+       alert(todo);
+    }
+}
+
+renderTodos();
