@@ -19,9 +19,21 @@ function renderTodos(){
        var todoElement = document.createElement('li'); // To create a element in HTML
        var todoText = document.createTextNode(todo); // To create a text 
 
-       todoElement.appendChild(todoText); // insert element in HTML
+       var linkElement = document.createElement('a'); // To create a element in HTML
+       linkElement.setAttribute('href', '#'); // to set a attribute in HTML element
 
-       listElement.appendChild(todoElement);
+       var position = todos.indexOf(todo); // to know the position of a element in todoList
+
+       linkElement.setAttribute('onClick', 'deleteTodo(' + position +')'); // in onClick action
+                                                                           // he will execute the function
+                                                                           // deleteTodo()
+
+       var linkText = document.createTextNode('Delete'); // To create a text
+       linkElement.appendChild(linkText); // insert element in HTML <a>
+
+       todoElement.appendChild(todoText); // insert element in HTML <li>
+       todoElement.appendChild(linkElement); // insert element in HTML <href>
+       listElement.appendChild(todoElement); // insert element in HTML <ul>
 
 
     }
@@ -46,4 +58,13 @@ function addTodo(){
 
 }
 
-buttonElement.onclick = addTodo; // when he make a onclick in the button, he will execute the function addTodo
+buttonElement.onclick = addTodo; // when he make a onclick in the button, 
+                                 // he will execute the function addTodo
+
+function deleteTodo(position){
+
+    // splice remove something in the list with the position for array
+
+    todos.splice(position, 1);
+    renderTodos();
+}
